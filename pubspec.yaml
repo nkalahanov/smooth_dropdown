@@ -1,0 +1,29 @@
+name: smooth_dropdown
+description: >-
+  Smooth-motion dropdown widgets for Flutter: an expansion tile that reveals any
+  content and a typed select. All open and close motion runs on the render layer.
+version: 1.0.0
+repository: https://github.com/nkalahanov/smooth_dropdown
+issue_tracker: https://github.com/nkalahanov/smooth_dropdown/issues
+topics:
+  - dropdown
+  - animation
+  - motion
+  - ui
+  - widgets
+
+environment:
+  sdk: ^3.9.0
+  flutter: '>=3.27.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^10.3.0
+
+flutter:
+  uses-material-design: true

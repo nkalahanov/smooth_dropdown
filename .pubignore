@@ -1,0 +1,58 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  .pubignore — the exact publish manifest filter for smooth_dropdown.
+#
+#  When a directory has BOTH a .gitignore and a .pubignore, `dart pub publish`
+#  uses the .pubignore and IGNORES that directory's .gitignore
+#  (dart.dev/tools/pub/publishing). So this file is SELF-SUFFICIENT: it restates
+#  the build-artifact excludes, then adds the publish-only excludes.
+#
+#  SHIPS (on purpose): lib/**, pubspec.yaml, README.md, CHANGELOG.md, LICENSE,
+#  analysis_options.yaml, example/lib/**, example/pubspec.yaml,
+#  example/README.md, example/analysis_options.yaml.
+#
+#  Verify before any real publish:  dart pub publish --dry-run
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Build artifacts — RESTATED (this .pubignore overrides the root .gitignore) ──
+.dart_tool/
+.packages
+build/
+pubspec.lock
+doc/api/
+
+# ── Tests & coverage — consumers don't need them; trims the tarball ──
+test/
+coverage/
+*.lcov
+
+# ── Example: pub.dev renders example/lib/main.dart, so its SOURCE ships — but the
+#    platform runner projects and local scaffolding are large and regenerable. ──
+example/.dart_tool/
+example/build/
+example/android/
+example/ios/
+example/linux/
+example/macos/
+example/windows/
+example/web/
+example/integration_test/
+example/test_driver/
+example/pubspec.lock
+example/*.iml
+example/.flutter-plugins
+example/.flutter-plugins-dependencies
+
+# ── IDE / editor / OS cruft ──
+*.iml
+.idea/
+.vscode/
+.DS_Store
+
+# ── CI config — lives in the repo for GitHub Actions; consumers never need it ──
+.github/
+
+# ── Repo-only preview assets — the README hotlinks assets/*.webp via ABSOLUTE
+#    raw.githubusercontent.com URLs pinned to a commit SHA, so the published
+#    archive never needs them. Excluding the whole DIR ships zero extra bytes
+#    (a file-level exclude would leave an empty assets/ husk in the tarball). ──
+/assets/
